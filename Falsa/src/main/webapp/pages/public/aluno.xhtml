@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gerenciador de Alunos</title>
+</h:head>
+
+<h:body>
+	<h:messages />
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				Cadastrar
+			</f:facet>
+			
+			<h:outputLabel value="Id:" for="idAlunoField" />
+			<h:inputText id="idAlunoField" label="id"
+			value="#{alunoBean.aluno.id}" style="width:350px" />
+			
+			<h:outputLabel value="Nome:" for="nomeAlunoField" />
+			<h:inputText id="nomeAlunoField" label="nome"
+				value="#{alunoBean.aluno.nome}" style="width:350px" />
+
+			<h:outputLabel value="DataNasc:"
+				for="dataNascAlunoField" />
+			<h:inputText id="dataNascAlunoField" label="dataNascs"
+				value="#{alunoBean.aluno.dataNasc}" style="width:350px" />
+
+			<h:commandButton value="Cadastrar" action="#{alunoBean.save()}" />
+		</h:panelGrid>
+
+		<br />
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				Remover
+			</f:facet>
+			<br />
+				Id: <h:inputText value="#{alunoBean.idExcluir}" />
+			<br />
+			<h:commandButton value="Excluir"
+				action="#{alunoBean.remove(alunoBean.idExcluir)}" />
+
+		</h:panelGrid>
+	</h:form>
+
+	<br />
+
+	<h:dataTable var="al" value="#{alunoBean.alunos}" border="1">
+		<f:facet name="header">
+				Lista de Alunos
+			</f:facet>
+		<h:column>
+			<f:facet name="header">Id</f:facet>
+			<h:outputText value="#{al.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{al.nome}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">DataNasc</f:facet>
+			<h:outputText value="#{al.dataNasc}" />
+		</h:column>
+		
+	</h:dataTable>
+
+
+</h:body>
+
+</html>

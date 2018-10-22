@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Gerenciador de Turmas</title>
+</h:head>
+
+<h:body>
+	<h:messages />
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				Cadastrar
+			</f:facet>
+			
+			<h:outputLabel value="Id:" for="idTurmaField" />
+			<h:inputText id="idTurmaField" label="id"
+			value="#{turmaBean.turma.id}" style="width:350px" />
+			
+			<h:outputLabel value="Professor:" for="professorTurmaField" />
+			<h:inputText id="professorTurmaField" label="professor"
+				value="#{turmaBean.turma.professor}" style="width:350px" />
+
+			<h:outputLabel value="Disciplina:" for="disciplinaTurmaField" />
+			<h:inputText id="disciplinaTurmaField" label="disciplina"
+				value="#{turmaBean.turma.disciplina}" style="width:350px" />
+
+
+			<h:commandButton value="Cadastrar" action="#{disciplinaBean.save()}" />
+		</h:panelGrid>
+
+		<br />
+
+		<h:panelGrid columns="2">
+			<f:facet name="header">
+				Remover
+			</f:facet>
+			<br />
+				Id: <h:inputText value="#{turmaBean.idExcluir}" />
+			<br />
+			<h:commandButton value="Excluir"
+				action="#{turmaBean.remove(turmaBean.idExcluir)}" />
+
+		</h:panelGrid>
+	</h:form>
+
+	<br />
+
+	<h:dataTable var="tu" value="#{turmaBean.turmas}" border="1">
+		<f:facet name="header">
+				Lista de Turmas
+			</f:facet>
+		<h:column>
+			<f:facet name="header">Id</f:facet>
+			<h:outputText value="#{tu.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Professor</f:facet>
+			<h:outputText value="#{tu.professor}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Disciplina</f:facet>
+			<h:outputText value="#{tu.disciplina}" />
+		</h:column>
+		
+	</h:dataTable>
+
+
+</h:body>
+
+</html>
